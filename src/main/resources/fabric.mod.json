@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "ditn",
+  "version": "${version}",
+
+  "name": "Deep In The Night",
+  "description": "As the sun sets, the darkness emerges",
+  "authors": [
+    "Safro"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "GNU General Public License v3",
+  "icon": "assets/ditn/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "safro.deep.in.the.night.DeepInTheNight"
+    ],
+    "client": [
+      "safro.deep.in.the.night.DeepInTheNightClient"
+    ]
+  },
+  "mixins": [
+    "ditn.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  }
+}

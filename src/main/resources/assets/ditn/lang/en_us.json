@@ -1,0 +1,14 @@
+{
+  "itemGroup.ditn.ditn": "Deep In The Night",
+
+  "item.ditn.death_axe": "Death's Axe",
+  "item.ditn.pumpkin_launcher": "Pumpkin Launcher",
+
+  "block.ditn.trap_pumpkin": "Pumpkin",
+
+  "entity.ditn.headless_horseman": "Headless Horseman",
+  "entity.ditn.scarecrow": "Scarecrow",
+  "entity.ditn.vampire": "Vampire",
+
+  "death.attack.bleeding": "%s bled to death"
+}
