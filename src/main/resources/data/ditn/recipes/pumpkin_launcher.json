@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BGP",
+    "BB"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:pumpkin"
+    },
+    "B": {
+      "item": "minecraft:blackstone"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "ditn:pumpkin_launcher"
+  }
+}

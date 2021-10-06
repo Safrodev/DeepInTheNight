@@ -1,0 +1,7 @@
+{
+  "crow": {
+    "category": "ambient", "sounds": [
+      {"name": "ditn:crow"}
+    ]
+  }
+}

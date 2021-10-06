@@ -10,5 +10,6 @@
   "entity.ditn.scarecrow": "Scarecrow",
   "entity.ditn.vampire": "Vampire",
 
-  "death.attack.bleeding": "%s bled to death"
+  "death.attack.bleeding": "%s bled to death",
+  "msg.ditn.bleeding": "You begin to bleed..."
 }

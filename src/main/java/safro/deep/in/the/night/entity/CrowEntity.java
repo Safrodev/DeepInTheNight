@@ -1,7 +1,6 @@
 package safro.deep.in.the.night.entity;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.*;
@@ -13,9 +12,9 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import safro.deep.in.the.night.entity.CrowEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
@@ -24,14 +23,10 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
-import safro.deep.in.the.night.entity.goal.EatCropsGoal;
+import safro.deep.in.the.night.registry.SoundRegistry;
 
-import java.util.EnumSet;
 import java.util.Random;
 
 public class CrowEntity extends AnimalEntity {
@@ -53,7 +48,7 @@ public class CrowEntity extends AnimalEntity {
         this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25D));
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(1, new EatCropsGoal(this, 1.0D, 60));
+        this.goalSelector.add(1, new BreakCropsGoal(1.2000000476837158D, 12, 1));
         this.goalSelector.add(3, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 10D));
     }
@@ -124,7 +119,7 @@ public class CrowEntity extends AnimalEntity {
     }
 
     public SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_PARROT_IMITATE_WITCH;
+        return SoundRegistry.CROW_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
@@ -168,5 +163,65 @@ public class CrowEntity extends AnimalEntity {
             entityData = new PassiveData(false);
         }
         return super.initialize(world, difficulty, spawnReason, (EntityData)entityData, entityNbt);
+    }
+
+    public class BreakCropsGoal extends MoveToTargetPosGoal {
+        protected int timer;
+
+        public BreakCropsGoal(double speed, int range, int maxYDifference) {
+            super(CrowEntity.this, speed, range, maxYDifference);
+        }
+
+        public double getDesiredSquaredDistanceToTarget() {
+            return 2.0D;
+        }
+
+        public boolean shouldResetPath() {
+            return this.tryingTime % 100 == 0;
+        }
+
+        protected boolean isTargetPos(WorldView world, BlockPos pos) {
+            BlockState blockState = world.getBlockState(pos);
+            return blockState.isOf(Blocks.WHEAT) && (Integer)blockState.get(CropBlock.AGE) == CropBlock.MAX_AGE;
+        }
+
+        public void tick() {
+            if (this.hasReached()) {
+                if (this.timer >= 40) {
+                    this.eatCrop();
+                } else {
+                    ++this.timer;
+                }
+            } else if (!this.hasReached() && CrowEntity.this.random.nextFloat() < 0.05F) {
+                CrowEntity.this.playSound(SoundEvents.ENTITY_PARROT_EAT, 1.0F, 1.0F);
+            }
+
+            super.tick();
+        }
+
+        protected void eatCrop() {
+            if (CrowEntity.this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+                BlockState blockState = CrowEntity.this.world.getBlockState(this.targetPos);
+                if (blockState.isOf(Blocks.WHEAT) && blockState.getBlock() instanceof CropBlock cropBlock) {
+
+                    int i = (Integer)blockState.get(CropBlock.AGE);
+                    blockState.with(CropBlock.AGE, 1);
+                    int j = 1 + CrowEntity.this.world.random.nextInt(2) + (i == 3 ? 1 : 0);
+                    Block.dropStack(CrowEntity.this.world, this.targetPos, new ItemStack(cropBlock.getSeedsItem(), j));
+
+                    CrowEntity.this.playSound(SoundEvents.BLOCK_CROP_BREAK, 1.0F, 1.0F);
+                    CrowEntity.this.world.setBlockState(this.targetPos, Blocks.AIR.getDefaultState(), 2);
+                }
+            }
+        }
+
+        public boolean canStart() {
+            return !CrowEntity.this.isSleeping() && super.canStart();
+        }
+
+        public void start() {
+            this.timer = 0;
+            super.start();
+        }
     }
 }
