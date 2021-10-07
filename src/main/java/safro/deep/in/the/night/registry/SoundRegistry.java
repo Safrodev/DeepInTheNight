@@ -8,6 +8,7 @@ import safro.deep.in.the.night.DeepInTheNight;
 public class SoundRegistry {
 
     public static SoundEvent CROW_AMBIENT = create("crow");
+    public static SoundEvent GHOST_SCARE = create("ghost_scare");
 
     static SoundEvent create(String id) {
         SoundEvent sound = new SoundEvent(new Identifier(DeepInTheNight.MODID, id));

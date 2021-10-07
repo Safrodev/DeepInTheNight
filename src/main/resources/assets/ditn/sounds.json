@@ -3,5 +3,10 @@
     "category": "ambient", "sounds": [
       {"name": "ditn:crow"}
     ]
+  },
+  "ghost_scare": {
+    "category": "ambient", "sounds": [
+      { "name":  "ditn:ghost_scare" }
+    ]
   }
 }

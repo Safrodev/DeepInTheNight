@@ -25,6 +25,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
+import safro.deep.in.the.night.entity.goal.FollowPlayerGoal;
 import safro.deep.in.the.night.registry.SoundRegistry;
 
 import java.util.Random;
@@ -49,7 +50,7 @@ public class CrowEntity extends AnimalEntity {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(2, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(1, new BreakCropsGoal(1.2000000476837158D, 12, 1));
-        this.goalSelector.add(3, new FollowMobGoal(this, 1.0D, 3.0F, 7.0F));
+        this.goalSelector.add(3, new FollowPlayerGoal(this, 1.0D, 3.0F, 7.0F));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 10D));
     }
 

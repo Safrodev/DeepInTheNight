@@ -9,7 +9,9 @@
   "entity.ditn.headless_horseman": "Headless Horseman",
   "entity.ditn.scarecrow": "Scarecrow",
   "entity.ditn.vampire": "Vampire",
+  "entity.ditn.crow": "Crow",
 
   "death.attack.bleeding": "%s bled to death",
-  "msg.ditn.bleeding": "You begin to bleed..."
+  "msg.ditn.bleeding": "You begin to bleed...",
+  "msg.ditn.blacknight": "The moon becomes obstructed. A night of pure darkness begins..."
 }

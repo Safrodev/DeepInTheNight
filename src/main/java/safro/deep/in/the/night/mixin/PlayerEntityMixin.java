@@ -36,9 +36,9 @@ public class PlayerEntityMixin {
                 return true;
             });
         } */
-            if (isUsingVampirismSerum(entity)) {
+        if (isUsingVampirismSerum(entity)) {
                 ability = true;
-            }
+        }
     }
 
     public boolean isUsingVampirismSerum(PlayerEntity entity) {
