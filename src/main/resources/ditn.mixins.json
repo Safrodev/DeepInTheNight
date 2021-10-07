@@ -7,7 +7,8 @@
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "DefaultBiomeFeaturesMixin",
-    "ServerWorldMixin"
+    "ServerWorldMixin",
+    "BatEntityMixin"
   ],
   "client": [
 
