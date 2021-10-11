@@ -1,6 +1,8 @@
 package safro.deep.in.the.night.mixin;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,6 +11,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import safro.deep.in.the.night.entity.ShadowReaperEntity;
+import safro.deep.in.the.night.registry.EntityRegistry;
 import safro.deep.in.the.night.registry.ItemRegistry;
 
 @Mixin(PlayerEntity.class)
@@ -32,6 +36,16 @@ public class PlayerEntityMixin {
         PlayerEntity entity = (PlayerEntity) (Object) this;
         if (ability) {
             entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 100, 1));
+        }
+    }
+
+    @Inject(method = "remove", at = @At("TAIL"))
+    private void summonShadowReaper(Entity.RemovalReason reason, CallbackInfo ci) {
+        PlayerEntity entity = (PlayerEntity) (Object) this;
+        if (entity.isDead() && !entity.world.isClient) {
+            ShadowReaperEntity reaper = EntityRegistry.SHADOW_REAPER.create(entity.world);
+            reaper.setPosition(entity.getX(), entity.getY(), entity.getZ());
+            entity.world.spawnEntity(reaper);
         }
     }
 }

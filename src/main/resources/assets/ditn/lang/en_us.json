@@ -3,15 +3,15 @@
 
   "item.ditn.death_axe": "Death's Axe",
   "item.ditn.pumpkin_launcher": "Pumpkin Launcher",
-
-  "block.ditn.trap_pumpkin": "Pumpkin",
+  "item.ditn.reaping_scythe": "Reaping Scythe",
+  "item.ditn.scythe_fragment": "Scythe Fragment",
 
   "entity.ditn.headless_horseman": "Headless Horseman",
   "entity.ditn.scarecrow": "Scarecrow",
   "entity.ditn.vampire": "Vampire",
   "entity.ditn.crow": "Crow",
+  "entity.ditn.shadow_reaper": "Shadow Reaper",
 
   "death.attack.bleeding": "%s bled to death",
-  "msg.ditn.bleeding": "You begin to bleed...",
-  "msg.ditn.blacknight": "The moon becomes obstructed. A night of pure darkness begins..."
+  "msg.ditn.bleeding": "You begin to bleed..."
 }

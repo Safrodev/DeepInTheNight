@@ -17,6 +17,11 @@ public class DefaultBiomeFeaturesMixin {
         builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.SCARECROW, 7, 2, 3));
     }
 
+    @Inject(method = "addMonsters", at = @At("TAIL"))
+    private static void addVampires(SpawnSettings.Builder builder, int zombieWeight, int zombieVillagerWeight, int skeletonWeight, CallbackInfo ci) {
+        builder.spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityRegistry.VAMPIRE, 15, 1, 2));
+    }
+
     @Inject(method = "addFarmAnimals", at = @At("TAIL"))
     private static void addCrows(SpawnSettings.Builder builder, CallbackInfo ci) {
         builder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityRegistry.CROW, 8, 4, 4));

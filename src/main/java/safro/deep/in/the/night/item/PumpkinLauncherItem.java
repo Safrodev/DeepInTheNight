@@ -37,7 +37,7 @@ public class PumpkinLauncherItem extends RangedWeaponItem {
                 double vZ = (user.getZ() + vec3d.z * 4.0D) - user.getZ();
                 PumpkinBombEntity pumpkin = new PumpkinBombEntity(world, user, vX, vY, vZ);
                 pumpkin.setItem(pumpkinStack);
-                pumpkin.updatePosition(user.getX() + vec.x * 2.0D, user.getEyeY() - 1, user.getZ() + vec.z * 2.0D);
+                pumpkin.updatePosition(user.getX() + vec.x * 2.0D, user.getEyeY(), user.getZ() + vec.z * 2.0D);
                 pumpkinStack.decrement(1);
                 world.playSound((PlayerEntity) null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_GILDED_BLACKSTONE_FALL, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
                 world.spawnEntity(pumpkin);

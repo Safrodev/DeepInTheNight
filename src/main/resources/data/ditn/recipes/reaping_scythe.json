@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BS ",
+    " S "
+  ],
+  "key": {
+    "B": {
+      "item": "ditn:scythe_fragment"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "ditn:reaping_scythe"
+  }
+}

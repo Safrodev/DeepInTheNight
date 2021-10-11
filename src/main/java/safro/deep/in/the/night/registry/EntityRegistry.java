@@ -24,6 +24,9 @@ public class EntityRegistry {
     public static final EntityType<CrowEntity>  CROW = FabricEntityTypeBuilder.<CrowEntity>create(SpawnGroup.CREATURE, CrowEntity::new)
             .dimensions(EntityDimensions.fixed(0.5F, 0.9F)).trackRangeBlocks(8).build();
 
+    public static final EntityType<ShadowReaperEntity>  SHADOW_REAPER = FabricEntityTypeBuilder.<ShadowReaperEntity>create(SpawnGroup.MISC, ShadowReaperEntity::new)
+            .dimensions(EntityDimensions.fixed(0.6F, 1.99F)).trackRangeBlocks(20).build();
+
     public static final EntityType<PumpkinBombEntity>  PUMPKIN_BOMB = FabricEntityTypeBuilder.<PumpkinBombEntity>create(SpawnGroup.MISC, PumpkinBombEntity::new)
             .dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(4).trackedUpdateRate(10).build();
 
@@ -32,6 +35,7 @@ public class EntityRegistry {
         Registry.register(Registry.ENTITY_TYPE, new Identifier(DeepInTheNight.MODID, "scarecrow"), SCARECROW);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(DeepInTheNight.MODID, "vampire"), VAMPIRE);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(DeepInTheNight.MODID, "crow"), CROW);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(DeepInTheNight.MODID, "shadow_reaper"), SHADOW_REAPER);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(DeepInTheNight.MODID, "pumpkin_bomb"), PUMPKIN_BOMB);
 
         // Attributes
@@ -39,5 +43,6 @@ public class EntityRegistry {
         FabricDefaultAttributeRegistry.register(SCARECROW, ScarecrowEntity.createScarecrowAttributes());
         FabricDefaultAttributeRegistry.register(VAMPIRE, VampireEntity.createVampireAttributes());
         FabricDefaultAttributeRegistry.register(CROW, CrowEntity.createCrowAttributes());
+        FabricDefaultAttributeRegistry.register(SHADOW_REAPER, ShadowReaperEntity.createReaperAttributes());
     }
 }

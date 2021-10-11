@@ -9,6 +9,7 @@ public class SoundRegistry {
 
     public static SoundEvent CROW_AMBIENT = create("crow");
     public static SoundEvent GHOST_SCARE = create("ghost_scare");
+    public static SoundEvent DEEP_SCREECH = create("deep_screech");
 
     static SoundEvent create(String id) {
         SoundEvent sound = new SoundEvent(new Identifier(DeepInTheNight.MODID, id));

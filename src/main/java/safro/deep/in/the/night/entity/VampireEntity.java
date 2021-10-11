@@ -8,10 +8,9 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -43,6 +42,15 @@ public class VampireEntity extends HostileEntity {
 
     public static boolean canSpawn(EntityType<VampireEntity> type, ServerWorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return isSpawnDark(world, pos, random);
+    }
+
+    public void remove(RemovalReason reason) {
+        if (!world.isClient && this.isDead()) {
+            BatEntity bat = EntityType.BAT.create(world);
+            bat.refreshPositionAndAngles(this.getBlockPos(), 0.0F, 0.0F);
+            world.spawnEntity(bat);
+        }
+        super.remove(reason);
     }
 
     public void tickMovement() {

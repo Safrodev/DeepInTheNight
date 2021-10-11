@@ -8,5 +8,10 @@
     "category": "ambient", "sounds": [
       { "name":  "ditn:ghost_scare" }
     ]
+  },
+  "deep_screech": {
+    "category": "ambient", "sounds": [
+      { "name":  "ditn:deep_screech" }
+    ]
   }
 }

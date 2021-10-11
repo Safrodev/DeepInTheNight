@@ -20,11 +20,14 @@ public abstract class ServerWorldMixin {
     @Shadow public abstract ServerWorld toServerWorld();
 
     @Inject(method = "tick", at = @At("TAIL"))
-    private void blackNight(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
+    private void playScares(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
         ServerWorld world = this.toServerWorld();
         if (world.isNight() && DitnConfig.getValue("allow_scares")) {
-            if (MathHelper.nextInt(world.random, 1, 1000) <= 10) {
+            if (MathHelper.nextInt(world.random, 1, 8000) <= 10) {
                 for (ServerPlayerEntity player : world.getPlayers()) {
+                    if (world.random.nextFloat() <= 0.5F) {
+                        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.DEEP_SCREECH, SoundCategory.AMBIENT, 1.0F, 1.0F);
+                    } else
                     world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.GHOST_SCARE, SoundCategory.AMBIENT, 1.0F, 1.0F);
                 }
             }

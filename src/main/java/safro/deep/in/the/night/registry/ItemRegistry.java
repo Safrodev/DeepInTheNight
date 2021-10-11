@@ -8,6 +8,7 @@ import net.minecraft.util.registry.Registry;
 import safro.deep.in.the.night.DeepInTheNight;
 import safro.deep.in.the.night.item.DeathAxeItem;
 import safro.deep.in.the.night.item.PumpkinLauncherItem;
+import safro.deep.in.the.night.item.ReapingScytheItem;
 import safro.deep.in.the.night.item.VampirismSerumItem;
 
 import java.util.LinkedHashMap;
@@ -20,10 +21,12 @@ public class ItemRegistry {
     // Weapons
     public static final Item DEATH_AXE = register("death_axe", new DeathAxeItem(ToolMaterials.IRON, 4, -2.0F, simple()));
     public static final Item PUMPKIN_LAUNCHER = register("pumpkin_launcher", new PumpkinLauncherItem(simple().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item REAPING_SCYTHE = register("reaping_scythe", new ReapingScytheItem(ToolMaterials.DIAMOND, 3, -2.8F, 4F, 4F, simple().rarity(Rarity.EPIC)));
 
     // Misc
     public static final Item VAMPIRE_BLOOD = register("vampire_blood", new Item(simple()));
     public static final Item VAMPIRISM_SERUM = register("vampirism_serum", new VampirismSerumItem(simple().maxCount(1)));
+    public static final Item SCYTHE_FRAGMENT = register("scythe_fragment", new Item(simple()));
 
     private static Item.Settings simple() {
         return new Item.Settings().group(DeepInTheNight.ITEMGROUP);

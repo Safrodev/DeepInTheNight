@@ -34,7 +34,7 @@ public class BloodDrainAttackGoal extends MeleeAttackGoal {
             this.zombie.setAttacking(true);
             this.zombie.getTarget().addStatusEffect(new StatusEffectInstance(EffectRegistry.BLEEDING, 1200, 0));
             if (this.zombie.getTarget() instanceof PlayerEntity player) {
-                player.sendMessage(new TranslatableText("msg.ditn.bleeding").formatted(Formatting.DARK_RED).formatted(Formatting.ITALIC), false);
+            //    player.sendMessage(new TranslatableText("msg.ditn.bleeding").formatted(Formatting.DARK_RED).formatted(Formatting.ITALIC), false);
             }
         } else {
             this.zombie.setAttacking(false);

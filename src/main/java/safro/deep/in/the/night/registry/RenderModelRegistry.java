@@ -8,10 +8,7 @@ import net.minecraft.util.Identifier;
 import safro.deep.in.the.night.DeepInTheNight;
 import safro.deep.in.the.night.client.model.CrowEntityModel;
 import safro.deep.in.the.night.client.model.ScarecrowEntityModel;
-import safro.deep.in.the.night.client.render.CrowEntityRenderer;
-import safro.deep.in.the.night.client.render.HeadlessHorsemanEntityRenderer;
-import safro.deep.in.the.night.client.render.ScarecrowEntityRenderer;
-import safro.deep.in.the.night.client.render.VampireEntityRenderer;
+import safro.deep.in.the.night.client.render.*;
 
 public class RenderModelRegistry {
 
@@ -23,6 +20,7 @@ public class RenderModelRegistry {
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.SCARECROW, ScarecrowEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.VAMPIRE, VampireEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.CROW, CrowEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.SHADOW_REAPER, ShadowReaperEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.PUMPKIN_BOMB, (context) -> new FlyingItemEntityRenderer(context));
 
         EntityModelLayerRegistry.registerModelLayer(SCARECROW_LAYER, ScarecrowEntityModel::getTexturedModelData);

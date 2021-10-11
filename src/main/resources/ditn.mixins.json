@@ -8,8 +8,8 @@
     "PlayerEntityMixin",
     "DefaultBiomeFeaturesMixin",
     "ServerWorldMixin",
-    "BatEntityMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "SwordItemAccessor"
   ],
   "client": [
 
