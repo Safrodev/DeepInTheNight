@@ -9,7 +9,8 @@
     "DefaultBiomeFeaturesMixin",
     "ServerWorldMixin",
     "TitleScreenMixin",
-    "SwordItemAccessor"
+    "SwordItemAccessor",
+    "RabbitEntityMixin"
   ],
   "client": [
 

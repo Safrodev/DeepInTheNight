@@ -1,7 +1,10 @@
 package safro.deep.in.the.night.registry;
 
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
@@ -25,5 +28,7 @@ public class RenderModelRegistry {
 
         EntityModelLayerRegistry.registerModelLayer(SCARECROW_LAYER, ScarecrowEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(CROW_LAYER, CrowEntityModel::getTexturedModelData);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.BROKEN_DOLL, RenderLayer.getCutout());
     }
 }

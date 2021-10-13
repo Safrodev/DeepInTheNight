@@ -83,7 +83,7 @@ public class HeadlessHorsemanEntity extends VindicatorEntity {
 
     @Override
     public void setCustomName(@Nullable Text name) {
-    //    super.setCustomName(name);
+        super.setCustomName(name);
     }
 
     class AttackGoal extends MeleeAttackGoal {

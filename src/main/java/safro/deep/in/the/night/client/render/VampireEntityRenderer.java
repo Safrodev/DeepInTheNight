@@ -23,4 +23,9 @@ public class VampireEntityRenderer extends LivingEntityRenderer<VampireEntity, P
     public Identifier getTexture(VampireEntity vampire) {
         return new Identifier("ditn:textures/entity/vampire.png");
     }
+
+    @Override
+    protected boolean hasLabel(VampireEntity entity) {
+        return false;
+    }
 }

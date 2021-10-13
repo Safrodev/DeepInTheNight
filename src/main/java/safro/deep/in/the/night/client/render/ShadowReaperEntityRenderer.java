@@ -8,7 +8,6 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.util.Identifier;
-import safro.deep.in.the.night.entity.HeadlessHorsemanEntity;
 import safro.deep.in.the.night.entity.ShadowReaperEntity;
 
 public class ShadowReaperEntityRenderer extends LivingEntityRenderer<ShadowReaperEntity, PlayerEntityModel<ShadowReaperEntity>> {
@@ -22,5 +21,10 @@ public class ShadowReaperEntityRenderer extends LivingEntityRenderer<ShadowReape
     @Override
     public Identifier getTexture(ShadowReaperEntity reaper) {
         return new Identifier("ditn:textures/entity/shadow_reaper.png");
+    }
+
+    @Override
+    protected boolean hasLabel(ShadowReaperEntity entity) {
+        return false;
     }
 }

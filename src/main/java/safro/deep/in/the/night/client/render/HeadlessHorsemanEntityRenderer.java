@@ -20,4 +20,9 @@ public class HeadlessHorsemanEntityRenderer extends LivingEntityRenderer<Headles
     public Identifier getTexture(HeadlessHorsemanEntity horseman) {
         return new Identifier("ditn:textures/entity/headless_horseman.png");
     }
+
+    @Override
+    protected boolean hasLabel(HeadlessHorsemanEntity entity) {
+        return false;
+    }
 }

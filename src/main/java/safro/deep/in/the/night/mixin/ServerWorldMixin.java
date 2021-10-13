@@ -23,7 +23,7 @@ public abstract class ServerWorldMixin {
     private void playScares(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
         ServerWorld world = this.toServerWorld();
         if (world.isNight() && DitnConfig.getValue("allow_scares")) {
-            if (MathHelper.nextInt(world.random, 1, 8000) <= 10) {
+            if (MathHelper.nextInt(world.random, 1, 9000) <= 10) {
                 for (ServerPlayerEntity player : world.getPlayers()) {
                     if (world.random.nextFloat() <= 0.5F) {
                         world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.DEEP_SCREECH, SoundCategory.AMBIENT, 1.0F, 1.0F);

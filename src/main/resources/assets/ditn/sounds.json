@@ -13,5 +13,15 @@
     "category": "ambient", "sounds": [
       { "name":  "ditn:deep_screech" }
     ]
+  },
+  "reaper_ambient": {
+    "category": "ambient", "sounds": [
+      {"name": "ditn:reaper_ambient"}
+    ]
+  },
+  "doll_laugh": {
+    "category": "blocks", "sounds": [
+      { "name": "ditn:doll_laugh" }
+    ]
   }
 }

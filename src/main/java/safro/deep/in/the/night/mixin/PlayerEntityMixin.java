@@ -39,7 +39,7 @@ public class PlayerEntityMixin {
         }
     }
 
-    @Inject(method = "remove", at = @At("TAIL"))
+    @Inject(method = "remove", at = @At("HEAD"))
     private void summonShadowReaper(Entity.RemovalReason reason, CallbackInfo ci) {
         PlayerEntity entity = (PlayerEntity) (Object) this;
         if (entity.isDead() && !entity.world.isClient) {

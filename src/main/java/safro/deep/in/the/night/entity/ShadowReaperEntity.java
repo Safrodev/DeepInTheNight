@@ -19,6 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import safro.deep.in.the.night.registry.ItemRegistry;
+import safro.deep.in.the.night.registry.SoundRegistry;
 
 public class ShadowReaperEntity extends PassiveEntity {
 
@@ -68,14 +69,14 @@ public class ShadowReaperEntity extends PassiveEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_OCELOT_AMBIENT;
+        return SoundRegistry.SHADOW_REAPER_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_OCELOT_HURT;
+        return SoundEvents.ENTITY_GENERIC_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_OCELOT_DEATH;
+        return SoundEvents.ENTITY_GENERIC_DEATH;
     }
 }

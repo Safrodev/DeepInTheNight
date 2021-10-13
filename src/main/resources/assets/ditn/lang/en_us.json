@@ -6,6 +6,8 @@
   "item.ditn.reaping_scythe": "Reaping Scythe",
   "item.ditn.scythe_fragment": "Scythe Fragment",
 
+  "block.ditn.broken_doll": "Broken Doll",
+
   "entity.ditn.headless_horseman": "Headless Horseman",
   "entity.ditn.scarecrow": "Scarecrow",
   "entity.ditn.vampire": "Vampire",
@@ -13,5 +15,6 @@
   "entity.ditn.shadow_reaper": "Shadow Reaper",
 
   "death.attack.bleeding": "%s bled to death",
-  "msg.ditn.bleeding": "You begin to bleed..."
+  "msg.ditn.bleeding": "You begin to bleed...",
+  "effect.ditn.bleeding": "Bleeding"
 }
