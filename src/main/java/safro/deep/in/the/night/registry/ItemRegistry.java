@@ -19,9 +19,9 @@ public class ItemRegistry {
 
 
     // Weapons
-    public static final Item DEATH_AXE = register("death_axe", new DeathAxeItem(ToolMaterials.IRON, 4, -2.0F, simple()));
+    public static final Item DEATH_AXE = register("death_axe", new DeathAxeItem(ToolMaterials.IRON, 4, -2.4F, simple()));
     public static final Item PUMPKIN_LAUNCHER = register("pumpkin_launcher", new PumpkinLauncherItem(simple().maxCount(1).rarity(Rarity.UNCOMMON)));
-    public static final Item REAPING_SCYTHE = register("reaping_scythe", new ReapingScytheItem(ToolMaterials.DIAMOND, 3, -2.8F, 4F, 4F, simple().rarity(Rarity.EPIC)));
+    public static final Item REAPING_SCYTHE = register("reaping_scythe", new ReapingScytheItem(ToolMaterials.DIAMOND, 3, -3F, 4F, 4F, simple().rarity(Rarity.EPIC)));
 
     // Misc
     public static final Item VAMPIRE_BLOOD = register("vampire_blood", new Item(simple()));
