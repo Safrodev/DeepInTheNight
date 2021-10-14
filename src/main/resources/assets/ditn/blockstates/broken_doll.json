@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "ditn:block/broken_doll",
+      "y": 90
+    },
+    "facing=north": {
       "model": "ditn:block/broken_doll"
+    },
+    "facing=south": {
+      "model": "ditn:block/broken_doll",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "ditn:block/broken_doll",
+      "y": 270
     }
   }
 }

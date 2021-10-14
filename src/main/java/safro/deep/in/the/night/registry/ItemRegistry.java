@@ -1,6 +1,7 @@
 package safro.deep.in.the.night.registry;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -38,5 +39,17 @@ public class ItemRegistry {
 
     public static void init() {
         ITEMS.keySet().forEach(item -> Registry.register(Registry.ITEM, ITEMS.get(item), item));
+
+        Registry.register(Registry.ITEM, new Identifier(DeepInTheNight.MODID, "vampire_spawn_egg"),
+                new SpawnEggItem(EntityRegistry.VAMPIRE, 2894892, 8816262,
+                        new Item.Settings().group(DeepInTheNight.ITEMGROUP)));
+
+        Registry.register(Registry.ITEM, new Identifier(DeepInTheNight.MODID, "crow_spawn_egg"),
+                new SpawnEggItem(EntityRegistry.CROW, 0, 2753283,
+                        new Item.Settings().group(DeepInTheNight.ITEMGROUP)));
+
+        Registry.register(Registry.ITEM, new Identifier(DeepInTheNight.MODID, "scarecrow_spawn_egg"),
+                new SpawnEggItem(EntityRegistry.SCARECROW, 2963571, 10967301,
+                        new Item.Settings().group(DeepInTheNight.ITEMGROUP)));
     }
 }

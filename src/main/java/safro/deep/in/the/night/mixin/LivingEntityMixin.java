@@ -3,6 +3,7 @@ package safro.deep.in.the.night.mixin;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.HorseEntity;
+import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -22,19 +23,17 @@ public class LivingEntityMixin {
         double x = entity.getX() + MathHelper.nextInt(entity.getRandom(), 8, 15);
         double y = entity.getY() + 1;
         double z = entity.getZ() + MathHelper.nextInt(entity.getRandom(), 8, 15);
-        if (entity.getRandom().nextInt(10) == 5) {
-            ServerWorld serverWorld = (ServerWorld)entity.world;
-            if (serverWorld.getEntitiesByClass(HeadlessHorsemanEntity.class, entity.getBoundingBox().expand(20), (headlessHorseman) -> {return true;}).size() <= 2) {
-                HorseEntity horse = EntityType.HORSE.create(serverWorld);
-                horse.setTame(true);
-                horse.setBreedingAge(0);
-                horse.setPosition(x, y, z);
-                serverWorld.spawnEntity(horse);
-                HeadlessHorsemanEntity horseman = EntityRegistry.HEADLESS_HORSEMAN.create(serverWorld);
-                horseman.setPosition(horse.getX(), horse.getY(), horse.getZ());
-                horseman.startRiding(horse);
-                serverWorld.spawnEntityAndPassengers(horseman);
-            }
+        ServerWorld serverWorld = (ServerWorld)entity.world;
+        if (serverWorld.getEntitiesByClass(HeadlessHorsemanEntity.class, entity.getBoundingBox().expand(30), EntityPredicates.VALID_ENTITY).size() <= 2) {
+            HorseEntity horse = EntityType.HORSE.create(serverWorld);
+            horse.setTame(true);
+            horse.setBreedingAge(0);
+            horse.setPosition(x, y, z);
+            serverWorld.spawnEntity(horse);
+            HeadlessHorsemanEntity horseman = EntityRegistry.HEADLESS_HORSEMAN.create(serverWorld);
+            horseman.setPosition(horse.getX(), horse.getY(), horse.getZ());
+            horseman.startRiding(horse);
+            serverWorld.spawnEntityAndPassengers(horseman);
         }
     }
 }

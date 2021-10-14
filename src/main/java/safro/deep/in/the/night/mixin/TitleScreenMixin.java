@@ -9,7 +9,7 @@ import safro.deep.in.the.night.DeepInTheNight;
 
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin {
-
+    // This is from a cool title screen idea I had, but I wanted to leave this type of thing to the pack makers
     @Shadow @Final
     private static final Identifier EDITION_TITLE_TEXTURE = new Identifier(DeepInTheNight.MODID, "textures/gui/spooky_edition.png");
 }
