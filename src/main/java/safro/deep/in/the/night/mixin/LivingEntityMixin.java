@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import safro.deep.in.the.night.config.DitnConfig;
 import safro.deep.in.the.night.entity.HeadlessHorsemanEntity;
 import safro.deep.in.the.night.registry.EntityRegistry;
 
@@ -24,7 +25,7 @@ public class LivingEntityMixin {
         double y = entity.getY() + 1;
         double z = entity.getZ() + MathHelper.nextInt(entity.getRandom(), 8, 15);
         ServerWorld serverWorld = (ServerWorld)entity.world;
-        if (serverWorld.getEntitiesByClass(HeadlessHorsemanEntity.class, entity.getBoundingBox().expand(30), EntityPredicates.VALID_ENTITY).size() <= 2) {
+        if (serverWorld.getEntitiesByClass(HeadlessHorsemanEntity.class, entity.getBoundingBox().expand(40), EntityPredicates.VALID_ENTITY).size() <= 2 && MathHelper.nextInt(serverWorld.random, 1, DitnConfig.getIntValue("headless_horseman_chance")) <= 10) {
             HorseEntity horse = EntityType.HORSE.create(serverWorld);
             horse.setTame(true);
             horse.setBreedingAge(0);

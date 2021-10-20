@@ -16,20 +16,26 @@ import java.util.function.BooleanSupplier;
 
 @Mixin(ServerWorld.class)
 public abstract class ServerWorldMixin {
+    private int scareCooldown = 0;
 
     @Shadow public abstract ServerWorld toServerWorld();
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void playScares(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
         ServerWorld world = this.toServerWorld();
-        if (world.isNight() && DitnConfig.getValue("allow_scares")) {
-            if (MathHelper.nextInt(world.random, 1, 9000) <= 10) {
+        if (world.isNight() && DitnConfig.getBooleanValue("allow_scares")) {
+            if (MathHelper.nextInt(world.random, 1, DitnConfig.getIntValue("scare_chance")) <= 10 && scareCooldown >= 1200) {
                 for (ServerPlayerEntity player : world.getPlayers()) {
                     if (world.random.nextFloat() <= 0.5F) {
                         world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.DEEP_SCREECH, SoundCategory.AMBIENT, 1.0F, 1.0F);
-                    } else
-                    world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.GHOST_SCARE, SoundCategory.AMBIENT, 1.0F, 1.0F);
+                        scareCooldown = 0;
+                    } else {
+                        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundRegistry.GHOST_SCARE, SoundCategory.AMBIENT, 1.0F, 1.0F);
+                        scareCooldown = 0;
+                    }
                 }
+            } else {
+                ++scareCooldown;
             }
         }
     }
