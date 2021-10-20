@@ -1,0 +1,25 @@
+{
+  "itemGroup.ditn.ditn": "Tief in der Nacht",
+
+  "item.ditn.death_axe": "Des Todes Axt",
+  "item.ditn.pumpkin_launcher": "Kürbiswerfer",
+  "item.ditn.reaping_scythe": "Sense des Sensenmannes",
+  "item.ditn.vampire_blood": "Vampirblut",
+  "item.ditn.vampirism_serum": "Vampir-Serum",
+  "item.ditn.scythe_fragment": "Sensenfragment",
+  "item.ditn.vampire_spawn_egg": "Vampir-Spawn-Ei",
+  "item.ditn.crow_spawn_egg": "Krähen-Spawn-Ei",
+  "item.ditn.scarecrow_spawn_egg": "Vogelscheuchen-Spawn-Ei",
+
+  "block.ditn.broken_doll": "Kaputte Puppe",
+
+  "entity.ditn.headless_horseman": "Kopfloser Reiter",
+  "entity.ditn.scarecrow": "Vogelscheuche",
+  "entity.ditn.vampire": "Vampir",
+  "entity.ditn.crow": "Krähe",
+  "entity.ditn.shadow_reaper": "Schatten-Sensenmann",
+
+  "death.attack.bleeding": "%s ist verblutet",
+  "msg.ditn.bleeding": "du beginnst zu bluten...",
+  "effect.ditn.bleeding": "Bluten"
+}
