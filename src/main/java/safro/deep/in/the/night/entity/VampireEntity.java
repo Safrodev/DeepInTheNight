@@ -1,12 +1,11 @@
 package safro.deep.in.the.night.entity;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -14,9 +13,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import safro.deep.in.the.night.entity.goal.BloodDrainAttackGoal;
+import safro.deep.in.the.night.entity.goal.CustomAttackGoal;
+import safro.deep.in.the.night.registry.EffectRegistry;
 
 import java.util.Random;
 
@@ -31,7 +32,7 @@ public class VampireEntity extends HostileEntity {
         this.goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this, new Class[0]));
-        this.goalSelector.add(2, new BloodDrainAttackGoal(this, 1.0D, false));
+        this.goalSelector.add(2, new CustomAttackGoal(this, 1.0D, false));
         this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, true));
         this.targetSelector.add(3, new FollowTargetGoal(this, IronGolemEntity.class, true));
     }
@@ -62,6 +63,25 @@ public class VampireEntity extends HostileEntity {
             }
         }
         super.tickMovement();
+    }
+
+    public boolean tryAttack(Entity target) {
+        if (super.tryAttack(target)) {
+            if (target instanceof LivingEntity) {
+                int i = 0;
+                if (this.world.getDifficulty() == Difficulty.NORMAL) {
+                    i = 1;
+                } else if (this.world.getDifficulty() == Difficulty.HARD) {
+                    i = 2;
+                } else if (this.world.getDifficulty() == Difficulty.EASY) {
+                    i = 0;
+                }
+                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(EffectRegistry.BLEEDING, 1200, 0), this);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     protected SoundEvent getAmbientSound() {

@@ -7,10 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import safro.deep.in.the.night.DeepInTheNight;
-import safro.deep.in.the.night.item.DeathAxeItem;
-import safro.deep.in.the.night.item.PumpkinLauncherItem;
-import safro.deep.in.the.night.item.ReapingScytheItem;
-import safro.deep.in.the.night.item.VampirismSerumItem;
+import safro.deep.in.the.night.item.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -28,6 +25,7 @@ public class ItemRegistry {
     public static final Item VAMPIRE_BLOOD = register("vampire_blood", new Item(simple()));
     public static final Item VAMPIRISM_SERUM = register("vampirism_serum", new VampirismSerumItem(simple().maxCount(1)));
     public static final Item SCYTHE_FRAGMENT = register("scythe_fragment", new Item(simple()));
+    public static final Item BANDAGE = register("bandage", new BandageItem(simple()));
 
     private static Item.Settings simple() {
         return new Item.Settings().group(DeepInTheNight.ITEMGROUP);
